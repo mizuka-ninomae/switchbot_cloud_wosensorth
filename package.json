@@ -1,0 +1,30 @@
+{
+  "name": "switchbot_wosensor_th",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-switchbot": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "lint": "echo \"Warning: lint is not used\" && exit 0",
+    "build": "echo \"Warning: build is not used\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizuka-ninomae/switchbot_wosensor_th.git"
+  },
+  "keywords": [
+    "SwitchBot",
+    "WoSensorTH",
+    "Sensor",
+    "Meter"
+  ],
+  "author": "mizuka-ninomae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mizuka-ninomae/switchbot_wosensor_th/issues"
+  },
+  "homepage": "https://github.com/mizuka-ninomae/switchbot_wosensor_th#readme"
+}
