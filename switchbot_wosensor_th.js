@@ -7,7 +7,6 @@ class SwitchBotWoSensorTH {
     switchbot.onadvertisement = (ad) => {
       switchbot.stopScan ();
       callback(null, {"te": ad.serviceData.temperature.c, "hu": ad.serviceData.humidity, "bt": ad.serviceData.battery}, null);
-      process.exit();
     };
 
     switchbot.startScan({
@@ -26,7 +25,6 @@ class SwitchBotWoSensorTH {
 
     .catch (function (error) {
       callback("Timeout Error", null, error)
-      process.exit();
     });
   }
 }
