@@ -1,1 +1,1 @@
-module.exports = require ('./switchbot_wosensor_th.js');  
+module.exports = require ('./switchbot_wosensorth_cloud.js');  
