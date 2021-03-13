@@ -2,10 +2,10 @@ const exec = require ("child_process").exec;
 let   te_val, hu_val, bt_val;
 
 class SwitchBotWoSensorTH {
-  constructor (access_token, dev_id, callback) {
-    let device_id = dev_id.toUpperCase().replace(/:/g,"");
-    let url       = `"https://api.switch-bot.com/v1.0/devices/${device_id}/status"`;
-    let cmd       = `curl GET -H "Authorization: ${access_token}" ${url}`;
+  constructor (access_token, device_id, callback) {
+    let dev_id  = device_id.toUpperCase().replace(/:/g,"");
+    let url     = `"https://api.switch-bot.com/v1.0/devices/${dev_id}/status"`;
+    let cmd     = `curl GET -H "Authorization: ${access_token}" ${url}`;
 
     exec (cmd, function (error, stdout, stderr) {
       let obj   = JSON.parse (stdout);
