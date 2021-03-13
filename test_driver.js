@@ -1,7 +1,8 @@
 const SwitchBotWoSensorTH = require('switchbot_wosensor_th');
-let   ble_mac = "XX:XX:XX:XX:XX:XX";
+let access_token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+let dev_id       = "XX:XX:XX:XX:XX:XX";
 
-let wosendor = new SwitchBotWoSensorTH(ble_mac, function(error, value, stderr){
+let wosendor = new SwitchBotWoSensorTH(access_token, dev_id, function(error, value, stderr){
   console.log (value);
   console.log (error);
   console.log (stderr);

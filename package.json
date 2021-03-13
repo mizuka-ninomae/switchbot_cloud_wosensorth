@@ -1,10 +1,9 @@
 {
   "name": "switchbot_wosensor_th",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "node-switchbot": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,36 +1,26 @@
-const Switchbot = require ('node-switchbot');
+const exec = require ("child_process").exec;
+let   te_val, hu_val, bt_val;
 
 class SwitchBotWoSensorTH {
-  constructor (ble_mac, callback) {
-    const switchbot = new Switchbot();
+  constructor (access_token, dev_id, callback) {
+    let device_id = dev_id.toUpperCase().replace(/:/g,"");
+    let url       = `"https://api.switch-bot.com/v1.0/devices/${device_id}/status"`;
+    let cmd       = `curl GET -H "Authorization: ${access_token}" ${url}`;
 
-    switchbot.onadvertisement = (ad) => {
-      switchbot.stopScan ();
-      callback(null, {"te": ad.serviceData.temperature.c, "hu": ad.serviceData.humidity, "bt": ad.serviceData.battery}, null);
-    };
-
-    switchbot.startScan({
-      model: 'T',
-      id:    ble_mac,
+    exec (cmd, function (error, stdout, stderr) {
+      let obj   = JSON.parse (stdout);
+      te_val    = obj.body.temperature;
+      hu_val    = obj.body.humidity;
+      bt_val    = null;
+      let value = {te: te_val, hu: hu_val, bt: bt_val};
+      callback (error, value, stderr);
+      return;
     })
-
-    .then (function () {
-      return switchbot.wait(30000);
-    })
-
-    .then (function () {
-      switchbot.stopScan();
-      throw new Error('The device was not found within the specified time.');
-    })
-
-    .catch (function (error) {
-      callback("Timeout Error", null, error)
-    });
   }
 }
 
 if (require.main === module) {
-  new SwitchBotWoSensorTH (process.argv[2], function(error, value, stderr){
+  new SwitchBotWoSensorTH (process.argv[2], process.argv[3], function(error, value, stderr) {
     console.log (value);
     console.log (error);
     console.log (stderr);
