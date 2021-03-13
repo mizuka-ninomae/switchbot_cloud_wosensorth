@@ -1,4 +1,4 @@
-const SwitchBotWoSensorTH = require('switchbot_wosensor_th');
+const SwitchBotWoSensorTH = require('switchbot_wosensorth_cloud');
 let access_token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 let dev_id       = "XX:XX:XX:XX:XX:XX";
 
