@@ -1,9 +1,11 @@
 {
   "name": "switchbot_cloud_wosensorth",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "request": "^2.88.2"
+  },
   "devDependencies": {},
   "scripts": {
     "lint": "echo \"Warning: lint is not used\" && exit 0",
