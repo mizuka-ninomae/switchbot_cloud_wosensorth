@@ -6,7 +6,7 @@ class CloudWoSensorTH {
     let dev_id    = device_id.toUpperCase ().replace (/:/g,"");
     const options = {
       url: `https://api.switch-bot.com/v1.0/devices/${dev_id}/status`,
-      method: 'GET',
+      method: `GET`,
       headers: {
         Authorization: `${access_token}`
       }
