@@ -1,31 +1,36 @@
-const exec = require ("child_process").exec;
+const request = require ("request");
 let   te_val, hu_val, bt_val;
 
-class SwitchBotWoSensorTH {
+class CloudWoSensorTH {
   constructor (access_token, device_id, callback) {
-    let dev_id  = device_id.toUpperCase().replace(/:/g,"");
-    let url     = `"https://api.switch-bot.com/v1.0/devices/${dev_id}/status"`;
-    let cmd     = `curl GET -H "Authorization: ${access_token}" ${url}`;
+    let dev_id    = device_id.toUpperCase ().replace (/:/g,"");
+    const options = {
+      url: `https://api.switch-bot.com/v1.0/devices/${dev_id}/status`,
+      method: 'GET',
+      headers: {
+        Authorization: `${access_token}`
+      }
+    }
 
-    exec (cmd, function (error, stdout, stderr) {
-      let obj   = JSON.parse (stdout);
+    request (options, function (error, response, body) {
+      let obj   = JSON.parse (body);
       te_val    = obj.body.temperature;
       hu_val    = obj.body.humidity;
       bt_val    = null;
       let value = {te: te_val, hu: hu_val, bt: bt_val};
-      callback (error, value, stderr);
+      callback (error, value, response);
       return;
     })
   }
 }
 
 if (require.main === module) {
-  new SwitchBotWoSensorTH (process.argv[2], process.argv[3], function(error, value, stderr) {
-    console.log (value);
+  new CloudWoSensorTH (process.argv[2], process.argv[3], function(error, value, response) {
     console.log (error);
-    console.log (stderr);
+//    console.log (response);
+    console.log (value);
   });
 }
 else {
-  module.exports = SwitchBotWoSensorTH;
+  module.exports = CloudWoSensorTH;
 }
