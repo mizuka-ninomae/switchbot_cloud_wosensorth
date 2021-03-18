@@ -1,4 +1,4 @@
-const request = require ("request");
+const Request = require ("request");
 let   te_val, hu_val, bt_val;
 
 class CloudWoSensorTH {
@@ -12,7 +12,7 @@ class CloudWoSensorTH {
       }
     }
 
-    request (options, function (error, response, body) {
+    Request (options, function (error, response, body) {
       let obj   = JSON.parse (body);
       te_val    = obj.body.temperature;
       hu_val    = obj.body.humidity;
